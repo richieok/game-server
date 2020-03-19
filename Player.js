@@ -6,8 +6,8 @@ const sequelize = new Sequelize({
 
 const Model = Sequelize.Model;
 
-class Position extends Model {};
-Position.init({
+class Player extends Model {};
+Player.init({
     username: {
         type: Sequelize.STRING,
         allowNull: false
@@ -22,7 +22,7 @@ Position.init({
     }
 }, {
     sequelize,
-    modelName: 'position'
+    modelName: 'Player'
 });
 
-module.exports = Position;
+module.exports = Player;
