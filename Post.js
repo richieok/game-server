@@ -5,7 +5,7 @@ const sequelize = new Sequelize({
 });
 
 const Model = Sequelize.Model;
-class Post extends Model {};
+class Post extends Model {}
 Post.init({
     post_title: {
         type: Sequelize.STRING

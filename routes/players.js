@@ -29,4 +29,9 @@ Router.put('/', (req, res) => {
     }
 });
 
+Router.get('/', (req, res)=>{
+    console.log('/player');
+    res.send('player');
+})
+
 module.exports = Router;

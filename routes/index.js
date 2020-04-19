@@ -1,4 +1,5 @@
 const Router = require('express').Router();
+const path = require('path');
 const Player = require('../Player');
 
 Router.get('/', (req, res) => {
@@ -9,6 +10,27 @@ Router.get('/', (req, res) => {
             // console.log(players);
             res.json(players);
         });
+});
+
+Router.get('/mesh/:name', (req, res, next)=>{
+    const options = {
+        root: path.join(__dirname, '../public/meshes'),
+        dotfiles: 'deny',
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
+        }
+    };
+    const filename = req.params.name;
+    console.log(`Filename: ${filename}`);
+    res.sendFile(filename, options, (err)=>{
+        if (err){
+            console.log(err);
+            next();
+        } else {
+            console.log('Sent: ', filename);
+        }
+    });
 });
 
 Router.post('/', (req, res) => {
